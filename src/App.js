@@ -15,42 +15,49 @@ class App extends Component {
         id:1,
         day: 'Monday',
         weather: 'Cloudy',
+        degree: 67,
         image: require('./assets/icons/cloudy.png')
       },
       {
         id:2,
         day: 'Tuesday',
         weather: 'Sunny',
+        degree: 71,
         image: require('./assets/icons/sun.png')
       },
       {
         id:3,
         day: 'Wednesday',
         weather: 'Cloudy',
+        degree: 70,
         image: require('./assets/icons/cloudy.png')
       },
       {
         id:4,
         day: 'Thursday',
         weather: 'Thunderstorm',
+        degree: 64,
         image: require('./assets/icons/thunder.png')
       },
       {
         id:5,
         day: 'Friday',
         weather: 'Rain',
+        degree:64,
         image: require('./assets/icons/rain.png')
       },
       {
         id:6,
         day: 'Saturday',
         weather: 'Sunny',
+        degree:72,
         image: require('./assets/icons/sun.png')
       },
       {
         id:7,
         day: 'Sunday',
         weather: 'Sunny',
+        degree:68,
         image: require('./assets/icons/sun.png')
       }
     ]

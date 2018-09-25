@@ -1,14 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Navigation.css';
-class Navigation extends Component{
-
-    render(){
-        return(
-            <div>
+const Navigation = (props) =>{
+    return(
+        <div>
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#"><b>Weather App</b></a>
+                        <a id="title" className="navbar-brand" href="#"><b>Weather App</b></a>
                     </div>
                     <ul className="nav navbar-nav">
                         <li><a href="#">Home</a></li>
@@ -16,8 +14,8 @@ class Navigation extends Component{
                 </div>
                 </nav>
             </div>
-        );
-    }
+    );
+    
 }
 
 export default Navigation;
