@@ -10,8 +10,8 @@ class WeatherCard extends Component {
          */
         const weatherList = weather.map( w => {
             return(
-            <div className="wcard col-lg-1"  key={w.id}>
-                <div className="wcontainer">
+            <div className="wcard col-md-4 col-md-offset-1"  key={w.id}>
+                <div className="wcontainer" onClick={this.testEvent}>
                     <img src={w.image}/>
                     <h4><b>{w.day}</b></h4>
                     <p><b>{w.weather}</b></p> 
@@ -30,6 +30,11 @@ class WeatherCard extends Component {
                 </div>
             </div>
         );
+    }
+
+    testEvent = (e) => {
+        e.preventDefault();
+        console.log('You clicked on '+ e);
     }
 }
 

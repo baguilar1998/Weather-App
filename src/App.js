@@ -32,7 +32,7 @@ class App extends Component {
       {
         id:4,
         day: 'Thursday',
-        weather: 'Thunder Storm',
+        weather: 'Thunderstorm',
         image: require('./assets/icons/thunder.png')
       },
       {
@@ -44,6 +44,12 @@ class App extends Component {
       {
         id:6,
         day: 'Saturday',
+        weather: 'Sunny',
+        image: require('./assets/icons/sun.png')
+      },
+      {
+        id:7,
+        day: 'Sunday',
         weather: 'Sunny',
         image: require('./assets/icons/sun.png')
       }

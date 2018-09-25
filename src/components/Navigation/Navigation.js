@@ -8,7 +8,7 @@ class Navigation extends Component{
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#">Weather App</a>
+                        <a className="navbar-brand" href="#"><b>Weather App</b></a>
                     </div>
                     <ul className="nav navbar-nav">
                         <li><a href="#">Home</a></li>
