@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// you must require images for react
 import './App.css';
+
+// Imported Components
+import Navigation from './components/Navigation/Navigation';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Navigation/>
+        <img src={require("./assets/sun.gif")}/>
+        <h1><strong>In Progress</strong></h1>
       </div>
     );
   }
