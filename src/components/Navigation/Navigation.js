@@ -9,7 +9,6 @@ const Navigation = (props) =>{
                         <a id="title" className="navbar-brand" href="#"><b>Weather App</b></a>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li><a href="#">Home</a></li>
                     </ul>
                 </div>
                 </nav>

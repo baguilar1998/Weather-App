@@ -10,6 +10,8 @@ class TodaysWeather extends PureComponent {
             location: '',
             degree: '',
             weather: '',
+            humidity: '',
+            wind:'',
             imgSrc : '',
             isSet:false
         }
@@ -28,11 +30,15 @@ class TodaysWeather extends PureComponent {
                 location: res.data.name,
                 degree: Math.floor((res.data.main.temp * (9/5)) - 459.67),
                 weather: res.data.weather[0].main,
+                humidity: res.data.main.humidity,
+                wind: res.data.wind.speed,
                 imgSrc: this.matchWeather(res.data.weather[0].main),
                 isSet: true
             });
         });
     }
+
+
     render(){
         if(this.state.isSet == false){
             return(
@@ -58,6 +64,8 @@ class TodaysWeather extends PureComponent {
                                     <h2><b>{this.state.location}</b></h2>
                                     <h3><b>{this.state.degree}{'\u00b0'}</b></h3>
                                     <h1><b>{this.state.weather}</b></h1>
+                                    <h4><b>Wind: {this.state.wind} mph</b></h4>
+                                    <h4><b>Humidity: {this.state.humidity} Rh</b></h4>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +86,8 @@ class TodaysWeather extends PureComponent {
             case'Drizzle':
                 return require('../../assets/gifs/rain.gif');
             case 'Fog':
+                return require('../../assets/gifs/fog.gif');            
+            case 'Mist':
                 return require('../../assets/gifs/fog.gif');
             case 'Snow':
                 return require('../../assets/gifs/snow.gif');

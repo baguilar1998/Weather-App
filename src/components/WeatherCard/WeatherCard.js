@@ -16,7 +16,7 @@ const WeatherCard = ({weather}) =>{
         return(
             <div className="wcard col-md-4  col-xs-12 col-md-offset-1"  key={w.id}>
                 <div className="wcontainer">
-                    <h4><b>{w.day}</b></h4>
+                    <h4><b>{w.date}</b></h4>
                     <img src={w.image}/>
                     <h2><b>{w.degree}{'\u00b0'}</b></h2>
                     <p><b>{w.weather}</b></p> 
