@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navigation.css';
+import SearchCity from '../SearchCity/SearchCity';
 const Navigation = (props) =>{
     return(
         <div>
@@ -9,9 +10,11 @@ const Navigation = (props) =>{
                         <a id="title" className="navbar-brand" href="#"><b>Weather App</b></a>
                     </div>
                     <ul className="nav navbar-nav">
+                        <SearchCity/>
                     </ul>
                 </div>
                 </nav>
+                <br/>
             </div>
     );
     

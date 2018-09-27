@@ -14,12 +14,12 @@ const WeatherCard = ({weather}) =>{
     */
     const weatherList = weather.map( w => {
         return(
-            <div className="wcard col-md-4  col-xs-12 col-md-offset-1 col-xs-offset-1"  key={w.id}>
+            <div className="wcard col-md-1.5 offset-md-1"  key={w.id}>
                 <div className="wcontainer">
                     <h4><b>{w.date}</b></h4>
                     <img src={w.image}/>
                     <h2><b>{w.degree}{'\u00b0'}</b></h2>
-                    <p><b>{w.weather}</b></p> 
+                    <h5><b>{w.weather}</b></h5> 
                 </div>
             </div>
             );

@@ -47,7 +47,7 @@ class App extends PureComponent {
         for(let i=3; i<res.data.list.length; i+=8){
           let weatherObj= {
            degree: Math.floor((res.data.list[i].main.temp* (9/5)) - 459.67),
-           date: days[(new Date(res.data.list[i].dt_txt.substring(0,11))).getDay()],
+           date: days[(new Date(res.data.list[i].dt_txt.substring(0,11))).getDay()] + " " +res.data.list[i].dt_txt.substring(0,11),
            weather: res.data.list[i].weather[0].main,
            image: this.matchWeather(res.data.list[i].weather[0].main)
           }
