@@ -9,47 +9,14 @@ import TodaysWeather from './components/TodaysWeather/TodaysWeather';
 import Axios from '../node_modules/axios';
 
 class App extends PureComponent {
-  // Temp placeholders for weather cards
-  state = {
-    weather : [
-      {
-        id:1,
-        day: 'Monday',
-        weather: 'Cloudy',
-        degree: 67,
-        image: require('./assets/icons/cloudy.png')
-      },
-      {
-        id:2,
-        day: 'Tuesday',
-        weather: 'Sunny',
-        degree: 71,
-        image: require('./assets/icons/sun.png')
-      },
-      {
-        id:3,
-        day: 'Wednesday',
-        weather: 'Cloudy',
-        degree: 70,
-        image: require('./assets/icons/cloudy.png')
-      },
-      {
-        id:4,
-        day: 'Thursday',
-        weather: 'Thunderstorm',
-        degree: 64,
-        image: require('./assets/icons/thunder.png')
-      },
-      {
-        id:5,
-        day: 'Friday',
-        weather: 'Rain',
-        degree:64,
-        image: require('./assets/icons/rain.png')
-      },
-    ]
-  }
-
+  
+  constructor() {
+    super();
+    this.state = {
+      weather : []
+    }
+  
+  }  
   matchWeather = (e) =>{
     switch(e){
         case 'Clear':
@@ -72,14 +39,15 @@ class App extends PureComponent {
   }
 
   componentDidMount() {
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     Axios.get('//api.openweathermap.org/data/2.5/forecast?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
     .then( res => {
         console.log(res);
         let weatherArr = [];
-        for(let i=0; i<res.data.list.length; i+=8){
+        for(let i=3; i<res.data.list.length; i+=8){
           let weatherObj= {
            degree: Math.floor((res.data.list[i].main.temp* (9/5)) - 459.67),
-           date: res.data.list[i].dt_txt,
+           date: days[(new Date(res.data.list[i].dt_txt.substring(0,11))).getDay()],
            weather: res.data.list[i].weather[0].main,
            image: this.matchWeather(res.data.list[i].weather[0].main)
           }

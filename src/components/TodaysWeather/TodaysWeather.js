@@ -45,6 +45,7 @@ class TodaysWeather extends PureComponent {
             <div className = "container-fluid">
                 <div className="row">
                     <div className="col-lg-12">
+                        <img src ={require('../../assets/gifs/sun.gif')}/>
                         <h2> <b> Loading ... </b></h2>
                     </div>
                 </div>
