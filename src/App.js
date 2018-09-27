@@ -46,20 +46,6 @@ class App extends Component {
         degree:64,
         image: require('./assets/icons/rain.png')
       },
-      {
-        id:6,
-        day: 'Saturday',
-        weather: 'Sunny',
-        degree:72,
-        image: require('./assets/icons/sun.png')
-      },
-      {
-        id:7,
-        day: 'Sunday',
-        weather: 'Sunny',
-        degree:68,
-        image: require('./assets/icons/sun.png')
-      }
     ]
   }
   render() {
