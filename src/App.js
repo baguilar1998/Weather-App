@@ -13,10 +13,10 @@ class App extends PureComponent {
   constructor() {
     super();
     this.state = {
-      weather : []
+      weather : [],
     }
-  
   }  
+
   matchWeather = (e) =>{
     switch(e){
         case 'Clear':
@@ -38,11 +38,18 @@ class App extends PureComponent {
     }
   }
 
+  updateCity = (city) =>{
+    console.log(city);
+    /*this.setState({
+      isSet:false
+    })
+    this.componentDidMount();*/
+  }
+
   componentDidMount() {
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     Axios.get('//api.openweathermap.org/data/2.5/forecast?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
     .then( res => {
-        console.log(res);
         let weatherArr = [];
         for(let i=3; i<res.data.list.length; i+=8){
           let weatherObj= {
@@ -55,7 +62,7 @@ class App extends PureComponent {
         }
         console.log(weatherArr);
         this.setState({
-          weather:weatherArr
+          weather:weatherArr,
         });
     });
 }
@@ -63,7 +70,7 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App">
-        <Navigation/>
+        <Navigation update={this.updateCity}/>
         <TodaysWeather/>
         <WeatherCard weather = {this.state.weather} />
       </div>

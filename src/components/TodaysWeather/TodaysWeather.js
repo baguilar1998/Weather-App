@@ -13,7 +13,8 @@ class TodaysWeather extends PureComponent {
             humidity: '',
             wind:'',
             imgSrc : '',
-            isSet:false
+            isSet:false,
+            newCity: ''
         }
     }
 
@@ -23,19 +24,23 @@ class TodaysWeather extends PureComponent {
      *  in order for this to load in an async way
      */
     componentDidMount() {
-        Axios.get('//api.openweathermap.org/data/2.5/weather?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
-        .then( res => {
-            console.log(res);
-            this.setState({
-                location: res.data.name,
-                degree: Math.floor((res.data.main.temp * (9/5)) - 459.67),
-                weather: res.data.weather[0].main,
-                humidity: res.data.main.humidity,
-                wind: res.data.wind.speed,
-                imgSrc: this.matchWeather(res.data.weather[0].main),
-                isSet: true
+        if(this.state.newCity !== ''){
+            console.log('test');
+        } else {
+            Axios.get('//api.openweathermap.org/data/2.5/weather?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+            .then( res => {
+                console.log(res);
+                this.setState({
+                    location: res.data.name,
+                    degree: Math.floor((res.data.main.temp * (9/5)) - 459.67),
+                    weather: res.data.weather[0].main,
+                    humidity: res.data.main.humidity,
+                    wind: res.data.wind.speed,
+                    imgSrc: this.matchWeather(res.data.weather[0].main),
+                    isSet: true
+                });
             });
-        });
+        }
     }
 
 
