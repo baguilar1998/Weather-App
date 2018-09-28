@@ -14,6 +14,7 @@ class App extends PureComponent {
     super();
     this.state = {
       weather : [],
+      zipCode: '11364'
     }
   }  
 
@@ -39,16 +40,11 @@ class App extends PureComponent {
   }
 
   updateCity = (city) =>{
-    console.log(city);
-    /*this.setState({
-      isSet:false
-    })
-    this.componentDidMount();*/
-  }
-
-  componentDidMount() {
+    this.setState({
+      zipCode:city
+    });
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip='+this.state.zipCode+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
     .then( res => {
         let weatherArr = [];
         for(let i=3; i<res.data.list.length; i+=8){
@@ -65,7 +61,11 @@ class App extends PureComponent {
           weather:weatherArr,
         });
     });
-}
+  }
+
+  componentDidMount() {
+    this.updateCity(this.state.zipCode);
+  }
 
   render() {
     return (

@@ -25,7 +25,7 @@ class SearchCity extends Component {
             <div>
                 <form className="form-inline" onSubmit={this.sendCity}> 
                     <div className="form-group mb-2">
-                        <input id="city" className="form-control" type="text" placeholder="Enter in a city" onChange={this.setCity} />
+                        <input id="city" className="form-control" type="text" placeholder="Enter in your zip code" onChange={this.setCity} />
                         <button id="enterButton" type="button submit" className="btn btn-dark">Enter</button>
                     </div>
                 </form>
