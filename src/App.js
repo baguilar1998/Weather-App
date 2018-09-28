@@ -32,6 +32,8 @@ class App extends PureComponent {
             return require('./assets/icons/fog.png');            
         case 'Mist':
             return require('./assets/icons/fog.png');
+        case 'Haze':
+            return require('./assets/gifs/fog.gif');
         case 'Snow':
             return require('./assets/icons/snow.png');
         case 'Thunderstorm':
@@ -40,11 +42,8 @@ class App extends PureComponent {
   }
 
   updateCity = (city) =>{
-    this.setState({
-      zipCode:city
-    });
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip='+this.state.zipCode+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip='+city+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
     .then( res => {
         let weatherArr = [];
         for(let i=3; i<res.data.list.length; i+=8){
@@ -57,9 +56,12 @@ class App extends PureComponent {
           weatherArr.push(weatherObj);
         }
         console.log(weatherArr);
-        this.setState({
-          weather:weatherArr,
-        });
+        if(weatherArr != this.state.weather){
+          this.setState({
+            weather:weatherArr,
+            zipCode: city
+          });
+        }
     });
   }
 
@@ -71,8 +73,8 @@ class App extends PureComponent {
     return (
       <div className="App">
         <Navigation update={this.updateCity}/>
-        <TodaysWeather/>
-        <WeatherCard weather = {this.state.weather} />
+        <TodaysWeather newCity={this.state.zipCode} onChange={this.updateCity}/>
+        <WeatherCard weather = {this.state.weather} onChange={this.updateCity}/>
       </div>
     );
   }

@@ -4,8 +4,8 @@ import Axios from '../../../node_modules/axios';
 
 class TodaysWeather extends PureComponent {
 
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
             location: '',
             degree: '',
@@ -14,33 +14,34 @@ class TodaysWeather extends PureComponent {
             wind:'',
             imgSrc : '',
             isSet:false,
-            newCity: ''
         }
     }
 
+    updateTodaysWeater = (city)=> {
+        Axios.get('//api.openweathermap.org/data/2.5/weather?zip='+this.props.newCity+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+        .then( res => {
+            console.log(res);
+            this.setState({
+                location: res.data.name,
+                degree: Math.floor((res.data.main.temp * (9/5)) - 459.67),
+                weather: res.data.weather[0].main,
+                humidity: res.data.main.humidity,
+                wind: res.data.wind.speed,
+                imgSrc: this.matchWeather(res.data.weather[0].main),
+                isSet: true
+            });
+        });
+    }
     /**
      * Sets the state data in an Async way
      *  The component must be a pure component
      *  in order for this to load in an async way
      */
     componentDidMount() {
-        if(this.state.newCity !== ''){
-            console.log('test');
-        } else {
-            Axios.get('//api.openweathermap.org/data/2.5/weather?zip=11364&appid=e0fa19a50c42ce1ad0ea75182468e70b')
-            .then( res => {
-                console.log(res);
-                this.setState({
-                    location: res.data.name,
-                    degree: Math.floor((res.data.main.temp * (9/5)) - 459.67),
-                    weather: res.data.weather[0].main,
-                    humidity: res.data.main.humidity,
-                    wind: res.data.wind.speed,
-                    imgSrc: this.matchWeather(res.data.weather[0].main),
-                    isSet: true
-                });
-            });
-        }
+        this.updateTodaysWeater(this.props.newCity);
+    }
+    componentDidUpdate(){
+        this.updateTodaysWeater(this.props.newCity);
     }
 
 
@@ -94,6 +95,8 @@ class TodaysWeather extends PureComponent {
             case 'Fog':
                 return require('../../assets/gifs/fog.gif');            
             case 'Mist':
+                return require('../../assets/gifs/fog.gif');
+            case 'Haze':
                 return require('../../assets/gifs/fog.gif');
             case 'Snow':
                 return require('../../assets/gifs/snow.gif');
