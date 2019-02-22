@@ -43,7 +43,7 @@ class App extends PureComponent {
 
   updateCity = (city) =>{
     const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip='+city+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+    Axios.get('//api.openweathermap.org/data/2.5/forecast?zip='+city+'&appid=cc0c49081b82f43a910cc23fc5f82319')
     .then( res => {
         let weatherArr = [];
         for(let i=3; i<res.data.list.length; i+=8){

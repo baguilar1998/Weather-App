@@ -18,7 +18,7 @@ class TodaysWeather extends PureComponent {
     }
 
     updateTodaysWeater = (city)=> {
-        Axios.get('//api.openweathermap.org/data/2.5/weather?zip='+this.props.newCity+'&appid=e0fa19a50c42ce1ad0ea75182468e70b')
+        Axios.get('//api.openweathermap.org/data/2.5/weather?zip='+this.props.newCity+'&appid=cc0c49081b82f43a910cc23fc5f82319')
         .then( res => {
             console.log(res);
             this.setState({
